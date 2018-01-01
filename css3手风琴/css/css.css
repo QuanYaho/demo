@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul,li {
+    list-style: none;
+}
+.shoufengqin {
+    width: 1040px;
+    height: 320px;
+    margin: 100px auto;
+    overflow: hidden;
+}
+.shoufengqin li {
+    float: left;
+    width: 208px;
+    transition: width,2s;
+}
+.shoufengqin:hover li {
+    width: 100px;
+}
+.shoufengqin li:hover {
+    width: 640px;
+}
+
+
