@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组去重并排序</title>
+</head>
+<body>
+	<script>
+//sort实现原理
+	 function mySort(arr,fn) {
+	 	for(var i=0; i<arr.length-1; i++) { //冒泡排序:外层跑的遍数
+			
+	 		var flag = true;//用变量flag保存是否比较好了
+	 		for(var j=0; j<arr.length-1-i; j++) { //冒泡排序:内层两两比较的遍数
+	 			if(fn(arr[j] , arr[j+1])>0) {
+	 				//通过中间变量temp，对调位置。
+	 				var temp = arr[j+1];
+	 				arr[j+1] = arr[j];
+	 				arr[j] = temp;
+	 				flag = false;
+	 			}
+	 		}
+	 		//如果比较好了
+	 		if(flag) {
+	 			break;
+	 		}
+	 	}
+	 	return arr;
+	 }
+
+
+var arr1 = [3,6,1,2,5,2,10,2];
+
+//数组去重
+Array.prototype.unique = function () {
+	var newArr = [];
+	for(var i=0; i<this.length; i++) {
+        if(newArr.indexOf(this[i]) == -1){
+            newArr.push(this[i]);
+		}
+	}
+    return newArr;
+}
+var newArr1 = arr1.unique(arr1);
+console.log(newArr1);
+
+////用函数封装的去重——不可行
+//function myArr(arr) {
+//	var res = [];
+//	for(var i=0; i<arr.length; i++) {
+//
+//			if(res.indexOf(res[i])== -1) {
+//				res.push(arr[i]);
+//			}
+//	}
+//	return res;
+//}
+// myArr(arr1);
+//console.log( myArr(arr1));
+
+ var arr2 = [{
+         name: "theOne",
+         age: 8,
+         skill:"song",
+         hobby:"everything"
+     }, {
+         name: "theTwo",
+         age: 30
+     }, {
+         name: "theThree",
+         age: 22,
+         height:"2333..."
+     }
+     ]
+
+ var answer1 = mySort(arr1,function(a,b) {
+ 	return a-b;
+ });
+ var answer2 = mySort(arr2,function (a, b) {
+         return a.age-b.age;
+     });
+ var answer3 = mySort(arr2,function (a, b) {
+         return a.length-b.length;
+     });
+
+ console.log(answer1);
+
+ console.log(answer2);
+
+ console.log(answer3);
+    
+
+//======= 调用数组的sort方法 ==================
+
+// console.log(arr1.sort(function (a, b) {
+//         return a-b;
+//     }));
+
+// console.log(arr2.sort(function (a, b) {
+//         return a.age-b.age;
+//     }));
+
+
+
+
+
+</script>
+</body>
+</html>
